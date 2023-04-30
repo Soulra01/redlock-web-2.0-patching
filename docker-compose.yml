@@ -23,4 +23,4 @@ services:
         ports:
             - "9906:3306"
         volumes:
-        - ./mysql-dump:/docker-entrypoint-initdb.d/
+        - ../redlock-web-2.0/mysql-dump/:/docker-entrypoint-initdb.d/
