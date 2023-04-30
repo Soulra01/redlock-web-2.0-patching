@@ -11,6 +11,8 @@ services:
             - ./php/src:/var/www/html/
         ports:
             - 7077:80
+        logging:
+            driver: none
     db:
         container_name: redlock
         image: mysql
@@ -24,10 +26,6 @@ services:
             - "9906:3306"
         volumes:
         - ./mysql-dump:/docker-entrypoint-initdb.d/
-    website:
-    image: nginx
-    logging:
-      driver: none
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
