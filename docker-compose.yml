@@ -10,7 +10,7 @@ services:
         volumes:
             - ./php/src:/var/www/html/
         ports:
-            - 8980:80
+            - 7077:80
     db:
         container_name: redlock
         image: mysql
@@ -23,4 +23,13 @@ services:
         ports:
             - "9906:3306"
         volumes:
-        - ../redlock-web-2.0/mysql-dump/:/docker-entrypoint-initdb.d/
+        - ./mysql-dump:/docker-entrypoint-initdb.d/
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '8000:80'
+        restart: always
+        environment:
+            PMA_HOST: db
+        depends_on:
+            - db
