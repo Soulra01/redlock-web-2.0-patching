@@ -16,16 +16,23 @@ $conn = new mysqli($host, $user, $pass, $mydatabase);
 // select query
 $sql = "SELECT * FROM users";
 $result = mysqli_query($conn, $sql);
-
-// Mengecek apakah query berhasil atau tidak
-if ($result->num_rows > 0) {
-    // Menampilkan total jumlah user
-    $row = $result->fetch_assoc();
-    echo "Total users: " . $row["total_users"];
-} else {
-    echo "No users found.";
-}
-
+// Jumlah data pada tabel users
+$total_row = mysqli_num_rows($result);
 // Menutup koneksi database
 $conn->close();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>jumlah Data</h1>
+    <h3>Jumlah data pada database Redlock-db adalah <?php echo $total_row; ?> </h3>
+</body>
+</html>
+
+
