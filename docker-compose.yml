@@ -24,6 +24,10 @@ services:
             - "9906:3306"
         volumes:
         - ./mysql-dump:/docker-entrypoint-initdb.d/
+    website:
+    image: nginx
+    logging:
+      driver: none
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
