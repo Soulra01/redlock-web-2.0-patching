@@ -12,7 +12,7 @@ COPY Redlock-db.sql /docker-entrypoint-initdb.d/
 # Install extension mysqli
 RUN docker-php-ext-install mysqli
 
-# Konfigurasi akses control list
+# Konfigurasi akses control listZZ
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R o-wx /var/www/html
 

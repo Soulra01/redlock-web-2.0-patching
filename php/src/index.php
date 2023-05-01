@@ -1,38 +1,59 @@
 <?php
+// Ini adalah lingkungan autentikasi yang telah ditentukan di layanan db
+
+// Layanan MySQL yang dinamai dalam docker-compose.yml.
 $host = 'db';
 
-// Database use name
+// Nama pengguna database
 $user = 'MYSQL_USER';
 
-//database user password
+// Kata sandi pengguna database
 $pass = 'MYSQL_PASSWORD';
 
-// database name
+// Nama database
 $mydatabase = 'Redlock';
-// check the mysql connection status
 
+// memeriksa status koneksi mysql
 $conn = new mysqli($host, $user, $pass, $mydatabase);
 
-// select query
+// query select
 $sql = "SELECT * FROM users";
 $result = mysqli_query($conn, $sql);
-// Jumlah data pada tabel users
-$total_row = mysqli_num_rows($result);
-// Menutup koneksi database
-$conn->close();
+$nomor = 1;
+// Menutup koneksi
+mysqli_close($conn);
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Data Redlock</title>
 </head>
 <body>
-    <h1>jumlah Data</h1>
-    <h3>Jumlah data pada database Redlock-db adalah <?php echo $total_row; ?> </h3>
+  <h1>Data Pegawai</h1>
+  <table style="border: 1px solid black;">
+    <tr>
+      <th>Nomor</th>
+      <th>Nama</th>
+      <th>Alamat</th>
+      <th>Jabatan</th>
+    </tr>
+    <?php if($result->num_rows > 0){ ?>
+      <?php while($data = $result->fetch_assoc()){ ?>
+        <tr>
+          <td><?php echo $nomor++; ?></td>
+          <td><?php echo $data['nama']; ?></td>
+          <td><?php echo $data['alamat']; ?></td>
+          <td><?php echo $data['jabatan']; ?></td>
+        </tr>
+      <?php } ?>
+    <?php }else{ ?>
+      <tr>
+        <td colspan='3'>Data Tidak Ditemukan</td>
+    </tr>
+    <?php } ?>
+  </table>
+  <form method="get" action="patching.php">
+  <button type="submit">Ke Halaman Patching</button>
+</form>
+
 </body>
 </html>
-
-
