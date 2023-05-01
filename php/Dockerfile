@@ -1,7 +1,9 @@
+# kita akan menggunakan format php:8.1-apache sebagai base image
 FROM php:8.1-apache
-# RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-# RUN apt-get update && apt-get upgrade -y
+
+# dengan workdir
 WORKDIR /var/www/html/
+
 # Copy content dari direktori aplikasi ke dalam container
 COPY . /var/www/html/
 
