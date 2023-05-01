@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-    // ini adalah container untuk menjalankan php dan apache
+    # ini adalah container untuk menjalankan php dan apache
     php-apache-environment:
         container_name: php-apache
         build:
@@ -14,7 +14,7 @@ services:
             - 7077:80
         logging:
             driver: none
-    // ini adalah container untuk menjalankan mysql
+    # ini adalah container untuk menjalankan mysql
     db:
         container_name: redlock
         image: mysql
@@ -28,7 +28,7 @@ services:
             - "9906:3306"
         volumes:
         - ./mysql-dump:/docker-entrypoint-initdb.d/
-    // ini adalah container untuk menjalankan phpmyadmin
+    # ini adalah container untuk menjalankan phpmyadmin
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
