@@ -26,8 +26,6 @@ services:
             MYSQL_PASSWORD: MYSQL_PASSWORD
         ports:
             - "9906:3306"
-        logging:
-            driver: none
         volumes:
         - ./mysql-dump:/docker-entrypoint-initdb.d/
     # ini adalah container untuk menjalankan phpmyadmin
