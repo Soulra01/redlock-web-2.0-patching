@@ -29,6 +29,7 @@ services:
         command: ["mysqld", "--init-file=/docker-entrypoint-initdb.d/disable-host-cache.sql"]
         volumes:
         - ./mysql-dump:/docker-entrypoint-initdb.d/
+        - ./disable-host-cache.sql:/docker-entrypoint-initdb.d/disable-host-cache.sql
     # ini adalah container untuk menjalankan phpmyadmin
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
